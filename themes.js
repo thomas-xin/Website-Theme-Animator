@@ -1,8 +1,8 @@
-var tick_delay = 60,
-	period = 8000,
-	hues = [0, 0.333, 0.667, 1],
+var hues = [0, 0.333, 0.667, 1],
 	sats = [1],
 	lums = [1],
+	tick_delay = 60,
+	period = 8000,
 	counter = 0;
 function interp(a, i) {
 	if (a.length == 1) return a[0];
