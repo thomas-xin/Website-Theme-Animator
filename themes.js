@@ -8,7 +8,7 @@ function interp(a, i) {
 	if (a.length == 1) return a[0];
 	var x = Math.floor(i);
 	var y = i - x;
-	if (x >= a.length - 1) return a[x] * (1 - y) + (a[0] + 1) * y;
+	if (x >= a.length - 1) return a[x] * (1 - y) + a[0] * y;
 	return a[x] * (1 - y) + a[x + 1] * y;
 }
 function luma(c) {
