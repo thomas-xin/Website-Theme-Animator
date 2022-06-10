@@ -34,7 +34,7 @@ setInterval(function () {
 	var objects = document.getElementsByTagName("*");
 	for (var i = 0; i < objects.length; i++) {
 		var obj = objects[i];
-		if (obj.x_luma == -1) continue;
+		if (obj.x_luma < 0) continue;
 		if (!obj.x_luma) {
 			var cs = window.getComputedStyle(obj)["background-color"];
 			var col = cs.substring(cs.indexOf("(") + 1, cs.length - 1).split(",");
@@ -45,7 +45,7 @@ setInterval(function () {
 				}
 				obj.x_alpha = col[3];
 			}
-			obj.x_luma = luma(col.slice(0, 3));
+			obj.x_luma = luma(col.slice(0, 3)) + 0.001;
 		}
 		var rect = obj.getBoundingClientRect();
 		var offs = 2 - Math.abs((rect.x + rect.width / 2) / width - 0.5) - (rect.y + rect.height / 2) / height;
