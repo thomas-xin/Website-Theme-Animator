@@ -5,9 +5,11 @@ var tick_delay = 60,
 	lums = [1],
 	counter = 0;
 function interp(a, i) {
+	if (a.length == 1) return a[0];
 	var x = Math.floor(i);
 	var y = i - x;
-	return a[x] * (1 - y) + a[(x + 1) % a.length] * y;
+	if (x >= a.length - 1) return a[x] * (1 - y) + (a[0] + 1) * y;
+	return a[x] * (1 - y) + a[x + 1] * y;
 }
 function luma(c) {
 	return c[0] * 0.299 + c[1] * 0.587 + c[2] * 0.114;
