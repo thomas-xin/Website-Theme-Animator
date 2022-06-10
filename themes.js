@@ -1,6 +1,6 @@
 var tick_delay = 60,
 	period = 8000,
-	hues = [0, 0.333, 0.667],
+	hues = [0, 0.333, 0.667, 1],
 	sats = [1],
 	lums = [1],
 	counter = 0;
@@ -50,9 +50,9 @@ setInterval(function () {
 		var rect = obj.getBoundingClientRect();
 		var offs = 2 - Math.abs((rect.x + rect.width / 2) / width - 0.5) - (rect.y + rect.height / 2) / height;
 		var index = (counter / period + offs) % 1;
-		var hue = interp(hues, index * hues.length);
-		var sat = interp(sats, index * sats.length);
-		var lum = interp(lums, index * lums.length);
+		var hue = interp(hues, index * (hues.length - 1));
+		var sat = interp(sats, index * (sats.length - 1));
+		var lum = interp(lums, index * (lums.length - 1));
 		lum = obj.x_luma / 255 * (lum * 0.667 + 0.167);
 		var hsl = hue * 360 + "," + sat * 100 + "%," + lum * 100 + "%";
 		if (obj.x_alpha) {
